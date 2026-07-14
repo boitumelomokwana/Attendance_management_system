@@ -1,0 +1,54 @@
+/* Navbar */
+
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Sidebar + Main */
+
+.content-wrapper {
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100vh - 130px); /* 70px navbar + 60px footer */
+    width: 100%;
+}
+
+/* Sidebar */
+
+.side-bar {
+    width: 250px;
+    flex-shrink: 0;
+    background: #1e3a8a;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.side-bar.collapsed {
+    width: 0;
+}
+
+/* Main */
+
+.main-content {
+    flex: 1;
+    padding: 25px;
+    background: #f4f6f9;
+}
+
+/* Footer */
+
+.footer {
+    height: 60px;
+    background: white;
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

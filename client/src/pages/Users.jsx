@@ -1,0 +1,17 @@
+function Users(){
+
+return(
+
+<div>
+
+<h1>Users</h1>
+
+<p>Manage system users.</p>
+
+</div>
+
+)
+
+}
+
+export default Users;

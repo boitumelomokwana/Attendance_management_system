@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-areas: 
+    "aside nav" 
+    "aside main" 
+    "footer footer";
+    
+
+    grid-template-rows: auto 1fr auto;
+    transition: grid-template-columns 300ms ease; 
+}
+
+
+.App.sidebar-open {
+    grid-template-columns: 150px 1fr;
+}
+
+.App.sidebar-closed {
+    grid-template-columns: 0px 1fr; 
+}
+
+aside {
+    grid-area: aside;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}

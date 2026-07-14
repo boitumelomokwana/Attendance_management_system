@@ -1,0 +1,33 @@
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding-top: 50px;
+    background: #1e293b;
+    color: white;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.side-bar.collapsed{
+    width: 0;
+    opacity: 0;
+}
+
+.side-bar a{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 18px 25px;
+}
+
+.side-bar a.active{
+    background: #2563eb;
+    border-left: 5px solid white;
+}
+
+.side-bar a:hover{
+    background: #2563eb;
+}
