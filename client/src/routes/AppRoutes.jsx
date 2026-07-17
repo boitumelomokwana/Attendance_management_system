@@ -5,7 +5,10 @@ import Users from "../pages/Users";
 import Attendance from "../pages/Attendace";
 import Reports from "../pages/Reports";
 import Settings from "../pages/Settings";
-import { Routes, Route } from "react-router-dom";
+import MyAttendance from "../pages/MyAttendance";
+import Profile from "../pages/Profile";
+import Login from "../pages/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "../components/common/ProtectedRoute";
 
 function AppRoutes() {
@@ -13,6 +16,7 @@ function AppRoutes() {
     return (
 
         <Routes>
+            <Route path="/login" element={<Login />} />
 
             <Route
                 path="/"
@@ -23,7 +27,7 @@ function AppRoutes() {
                 }
             />
             <Route
-                path="/"
+                path="/students"
                 element={
                     <ProtectedRoute>
                         <Students />
@@ -31,38 +35,54 @@ function AppRoutes() {
                 }
             />
             <Route
-                path="/"
+                path="/users"
                 element={
                     <ProtectedRoute>
-                       <Users/>
+                        <Users />
                     </ProtectedRoute>
                 }
             />
             <Route
-                path="/"
+                path="/attendance"
                 element={
                     <ProtectedRoute>
-                       <Attendance/>
+                        <Attendance />
                     </ProtectedRoute>
                 }
             />
             <Route
-                path="/"
+                path="/reports"
                 element={
                     <ProtectedRoute>
-                       <Reports />
+                        <Reports />
                     </ProtectedRoute>
                 }
             />
             <Route
-                path="/"
+                path="/settings"
                 element={
                     <ProtectedRoute>
-                       <Settings />
+                        <Settings />
                     </ProtectedRoute>
                 }
             />
-
+            <Route
+                path="/my-attendance"
+                element={
+                    <ProtectedRoute>
+                        <MyAttendance />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/profile"
+                element={
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
     );

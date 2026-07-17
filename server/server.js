@@ -19,6 +19,17 @@ app.use(
     require("./routes/authRoutes")
 );
 
+app.use(
+    "/api/students",
+    require("./routes/Student")
+);
+
+app.get("/api/health", (_req, res) => {
+
+    res.json({ status: "ok" });
+
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

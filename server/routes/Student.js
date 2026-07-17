@@ -10,7 +10,7 @@ const {
 
     deleteStudent
 
-} = require("../controllers/studentController");
+} = require("../controllers/Student");
 
 router.get("/", getStudents);
 

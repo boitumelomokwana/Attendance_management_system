@@ -1,10 +1,11 @@
 .card{
-    background:white;
+    background: linear-gradient(135deg, #F6FAFD 0%, #B3CFE5 100%);
     border-radius:12px;
     padding:20px;
     width:250px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    box-shadow:0 8px 24px rgba(15, 23, 42, 0.08);
     transition:.3s;
+    border: 1px solid #4A7FA7;
 }
 
 .card:hover{
@@ -12,11 +13,11 @@
 }
 
 .card h3{
-    color:#666;
+    color:#1A3D63;
     margin-bottom:10px;
 }
 
 .card h1{
-    color:#2563eb;
+    color:#4A7FA7;
     font-size:40px;
 }
