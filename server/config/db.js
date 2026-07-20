@@ -9,10 +9,17 @@ const sequelize = new Sequelize(
     port: parseInt(process.env.DB_PORT, 10) || 3306,
     dialect: "mysql",
     logging: false,
+    dialectOptions: {
+      // Fail quickly when MySQL is offline so the API can use its fallback mode.
+      connectTimeout: 5000,
+      ...(process.env.DB_SSL === "true"
+        ? { ssl: { require: true, rejectUnauthorized: false } }
+        : {})
+    },
     pool: {
       max: 10,
       min: 0,
-      acquire: 30000,
+      acquire: 5000,
       idle: 10000
     }
   }
@@ -22,8 +29,10 @@ const connectDB = async () => {
   try {
     await sequelize.authenticate();
     console.log("MySQL Connected");
+    return true;
   } catch (error) {
     console.warn("MySQL unavailable:", error.message);
+    return false;
   }
 };
 

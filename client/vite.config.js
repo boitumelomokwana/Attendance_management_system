@@ -7,10 +7,6 @@ export default defineConfig({
   server: {
     host: '127.0.0.1',
     port: 5173,
-    strictPort: true,
-    watch: {
-      usePolling: true,
-      ignored: ['**/AppData/Roaming/Code/Network/**']
-    }
+    strictPort: true
   }
 })

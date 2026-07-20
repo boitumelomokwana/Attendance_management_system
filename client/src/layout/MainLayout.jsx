@@ -1,10 +1,10 @@
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
-import AppRoutes from "../routes/AppRoutes";
 import "./MainLayout.css";
 
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 function MainLayout() {
 
@@ -24,7 +24,7 @@ function MainLayout() {
         <SideBar isOpen={isSidebarOpen} />
 
         <main className="main-content">
-          <AppRoutes />
+          <Outlet />
         </main>
       </div>
 

@@ -1,4 +1,3 @@
-const 
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -6,13 +5,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const { connectDB, sequelize } = require("./config/db");
-
-connectDB();
-
-
-sequelize.sync({ alter: true }).catch((err) => {
-  console.error("Sequelize sync error:", err.message);
-});
 
 const app = express();
 
@@ -41,6 +33,17 @@ app.get("/api/health", (_req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+// Connect once, then ensure tables exist. `alter: true` was previously run on
+// every boot, which can take a long time and may modify an existing database.
+// The server deliberately starts first so its health endpoint remains responsive.
+connectDB().then((connected) => {
+  if (!connected) return;
+
+  sequelize.sync().catch((err) => {
+    console.error("Sequelize sync error:", err.message);
+  });
 });
