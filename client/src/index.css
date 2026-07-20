@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Inter, Arial, sans-serif;
 }
 
 html, body, #root {
@@ -10,7 +10,12 @@ html, body, #root {
 }
 
 body {
-  background: #f4f6f9;
+  background: linear-gradient(135deg, #B3CFE5 0%, #F6FAFD 100%);
+  color: #0A1931;
+}
+
+button, input, select {
+  font: inherit;
 }
 
 .container {
@@ -20,6 +25,6 @@ body {
 .main {
   flex: 1;
   padding: 20px;
-  background: #f4f6f9;
+  background: transparent;
   min-height: calc(100vh - 120px);
 }

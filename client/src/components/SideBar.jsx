@@ -11,13 +11,16 @@ import {
     FaClipboardCheck,
     FaChartBar,
     FaCog,
-    FaSignOutAlt
+    FaSignOutAlt,
+    FaUser,
+    FaHistory
 } from "react-icons/fa";
 
 function SideBar({ isOpen }) {
 
     const navigate = useNavigate();
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
+    const role = user?.role || "Admin";
 
     function handleLogout(){
 
@@ -32,7 +35,6 @@ function SideBar({ isOpen }) {
         <aside className={`side-bar ${isOpen ? "" : "collapsed"}`}>
 
             <ul>
-
                 <li>
                     <NavLink to="/">
                         <FaHome />
@@ -40,31 +42,55 @@ function SideBar({ isOpen }) {
                     </NavLink>
                 </li>
 
-                <li>
-                    <NavLink to="/users">
-                        <FaUsers />
-                        Users
-                    </NavLink>
-                </li>
+                {(role === "Admin" || role === "Lecturer") && (
+                    <li>
+                        <NavLink to="/students">
+                            <FaUserGraduate />
+                            Students
+                        </NavLink>
+                    </li>
+                )}
+
+                {role === "Admin" && (
+                    <li>
+                        <NavLink to="/users">
+                            <FaUsers />
+                            Users
+                        </NavLink>
+                    </li>
+                )}
+
+                {(role === "Admin" || role === "Lecturer") && (
+                    <li>
+                        <NavLink to="/attendance">
+                            <FaClipboardCheck />
+                            Attendance
+                        </NavLink>
+                    </li>
+                )}
+
+                {(role === "Admin" || role === "Lecturer") && (
+                    <li>
+                        <NavLink to="/reports">
+                            <FaChartBar />
+                            Reports
+                        </NavLink>
+                    </li>
+                )}
+
+                {role === "Student" && (
+                    <li>
+                        <NavLink to="/my-attendance">
+                            <FaHistory />
+                            My Attendance
+                        </NavLink>
+                    </li>
+                )}
 
                 <li>
-                    <NavLink to="/students">
-                        <FaUserGraduate />
-                        Students
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink to="/attendance">
-                        <FaClipboardCheck />
-                        Attendance
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink to="/reports">
-                        <FaChartBar />
-                        Reports
+                    <NavLink to="/profile">
+                        <FaUser />
+                        Profile
                     </NavLink>
                 </li>
 
@@ -75,13 +101,12 @@ function SideBar({ isOpen }) {
                     </NavLink>
                 </li>
 
-                <li onClick={handleLogout}>
-
+                <li>
+                    <button onClick={handleLogout} className="logout-btn">
                         <FaSignOutAlt />
                         Logout
-
+                    </button>
                 </li>
-
             </ul>
 
         </aside>

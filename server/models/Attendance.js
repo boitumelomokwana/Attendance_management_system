@@ -1,53 +1,42 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db");
 
-const attendanceSchema = new mongoose.Schema({
-
-    student:{
-
-        type:mongoose.Schema.Types.ObjectId,
-
-        ref:"Student",
-
-        required:true
-
+const Attendance = sequelize.define(
+  "Attendance",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
-
-    date:{
-
-        type:Date,
-
-        required:true
-
+    studentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Students",
+        key: "id"
+      }
     },
-
-    status:{
-
-        type:String,
-
-        enum:[
-            "Present",
-            "Absent",
-            "Late",
-            "Leave"
-        ],
-
-        required:true
-
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
     },
-
-    markedBy:{
-
-        type:mongoose.Schema.Types.ObjectId,
-
-        ref:"User"
-
+    status: {
+      type: DataTypes.ENUM("Present", "Absent", "Late", "Leave"),
+      allowNull: false
+    },
+    markedById: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "Users",
+        key: "id"
+      }
     }
-
-},{
-    timestamps:true
-});
-
-module.exports = mongoose.model(
-    "Attendance",
-    attendanceSchema
+  },
+  {
+    timestamps: true
+  }
 );
+
+module.exports = Attendance;

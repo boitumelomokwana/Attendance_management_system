@@ -6,7 +6,7 @@
 
 .student-form h2 {
     margin-bottom: 10px;
-    color: #1e3a8a;
+    color: #1A3D63;
 }
 
 .student-form input,
@@ -20,7 +20,7 @@
 
 .student-form input:focus,
 .student-form select:focus {
-    border-color: #2563eb;
+    border-color: #4A7FA7;
 }
 
 .student-form button {
@@ -31,7 +31,7 @@
 
     border-radius: 8px;
 
-    background: #2563eb;
+    background: #4A7FA7;
 
     color: white;
 
@@ -43,5 +43,5 @@
 }
 
 .student-form button:hover {
-    background: #1d4ed8;
+    background: #1A3D63;
 }

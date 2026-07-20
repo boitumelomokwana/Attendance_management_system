@@ -1,72 +1,41 @@
-
 import Dashboard from "../pages/Dashboard";
 import Students from "../pages/Students";
 import Users from "../pages/Users";
 import Attendance from "../pages/Attendace";
 import Reports from "../pages/Reports";
 import Settings from "../pages/Settings";
-import { Routes, Route } from "react-router-dom";
+import MyAttendance from "../pages/MyAttendance";
+import Profile from "../pages/Profile";
+import Login from "../pages/Login";
+import MainLayout from "../layout/MainLayout";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import ProtectedRoute from "../components/common/ProtectedRoute";
 
 function AppRoutes() {
+  const { user } = useAuth();
 
-    return (
+  return (
+    <Routes>
+      <Route
+        path="/login"
+        element={user ? <Navigate to="/" replace /> : <Login />}
+      />
 
-        <Routes>
+      <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/students" element={<Students />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/attendance" element={<Attendance />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/my-attendance" element={<MyAttendance />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                        <Students />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                       <Users/>
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                       <Attendance/>
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                       <Reports />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/"
-                element={
-                    <ProtectedRoute>
-                       <Settings />
-                    </ProtectedRoute>
-                }
-            />
-
-        </Routes>
-
-    );
-
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 }
 
 export default AppRoutes;
