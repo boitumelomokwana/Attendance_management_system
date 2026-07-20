@@ -2,6 +2,7 @@ services:
   - type: web
     runtime: node
     name: attendance-api
+    plan: free
     rootDir: server
     buildCommand: npm ci
     startCommand: npm start
