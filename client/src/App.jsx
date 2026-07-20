@@ -1,11 +1,7 @@
-import MainLayout from './layout/MainLayout';
-import Login from './pages/Login';
-import { useAuth } from './context/AuthContext';
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  const { user } = useAuth();
-
-  return user ? <MainLayout /> : <Login />;
+  return <AppRoutes />;
 }
 
 export default App;

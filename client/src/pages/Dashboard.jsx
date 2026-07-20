@@ -1,7 +1,7 @@
 import Card from "../components/cards";
 import Table from "../components/table";
 import { useAuth } from "../context/AuthContext";
-import "../styles/dashboard.css";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
     const { user } = useAuth();
