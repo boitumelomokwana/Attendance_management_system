@@ -2,8 +2,8 @@ import { useState, useMemo, useEffect } from "react";
 import { toast } from "react-toastify";
 
 import StudentTable from "../components/StudentTable";
-import StudentForm from "../components/StudentForm";
-import Modal from "../components/Modal";
+import StudentForm from "../components/studentForm";
+import Modal from "../components/modal";
 import { getStudents, addStudent, updateStudent, deleteStudent } from "../services/studentService";
 
 import "../styles/Students.css";
