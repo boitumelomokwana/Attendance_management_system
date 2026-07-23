@@ -22,9 +22,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/authRoutes"));
-
 app.use("/api/students", require("./routes/Student"));
-
 app.use("/api/attendance", require("./routes/attendanceRoutes"));
 
 app.get("/api/health", (_req, res) => {
@@ -37,9 +35,6 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Connect once, then ensure tables exist. `alter: true` was previously run on
-// every boot, which can take a long time and may modify an existing database.
-// The server deliberately starts first so its health endpoint remains responsive.
 connectDB().then((connected) => {
   if (!connected) return;
 
